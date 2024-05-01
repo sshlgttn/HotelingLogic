@@ -5,16 +5,20 @@ class Room {
 	static int roomNum;
 	int id;
 protected:
-	int price;
-	bool isBooked;
+	int price = 0;
+	bool isBooked = 0;
 	std::string guestName;
+	bool requiresCleaning;
+	bool requiresDelivery;
 public:
 	Room() {
 		roomNum++;
 		id = roomNum;
-		int price = 0;
-		bool isBooked = 0;
-		std::string guestName = "NULL";
+		price = 0;
+		isBooked = 0;
+		guestName = "NULL";
+		requiresCleaning = 0;
+		requiresDelivery = 0;
 	}
 	void printData() {
 		std::cout << id << std::endl;
@@ -40,23 +44,45 @@ public:
 	std::string getGuestName() {
 		return guestName;
 	}
+	void setRequiresCleaning(std::string requiresCleaning) {
+		if (requiresCleaning[0] == 'y' || requiresCleaning[0] == 'Y') this->requiresCleaning = true;
+		else if (requiresCleaning[0] == 'n' || requiresCleaning[0] == 'N') this->requiresCleaning = false;
+		else { errorMSG(); this->requiresCleaning = false; } //COPYPAST FROM BOOK MIGHT BE A MISTAKE
+	}
+	bool getRequiresCleaning() {
+		return requiresCleaning;
+	}
+	void setRequiresDelivery(std::string requiresDelivery) {
+		if (requiresDelivery[0] == 'y' || requiresDelivery[0] == 'Y') this->requiresDelivery = true;
+		else if (requiresDelivery[0] == 'n' || requiresDelivery[0] == 'N') this->requiresDelivery = false;
+		else { errorMSG(); this->requiresDelivery = false; } //COPYPAST FROM BOOK MIGHT BE A MISTAKE
+	}
+	bool getRequiresDelivery() {
+		return requiresDelivery;
+	}
 };	
 
-class BasicRoom : public Room {
+class VipRoom : public Room {
+	bool isJacuzzi = 0;
+	bool isPA = 0; // Presidential apartments
+
 protected:
-	bool miniBar;
+	bool miniBar = 0;
+	int numOfRooms = 0;
+public:
+	VipRoom() {
+
+	}
+};
+
+class BasicRoom : public VipRoom {
 public:
 	BasicRoom() {
 		
 	}
 };
 
-class VipRoom : public BasicRoom {
-public:
-	VipRoom() {
 
-	}
-};
 
 
 
