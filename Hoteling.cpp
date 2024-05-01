@@ -4,6 +4,7 @@
 class Room {
 	static int roomNum;
 	int id;
+protected:
 	int price;
 	bool isBooked;
 	std::string guestName;
@@ -11,6 +12,9 @@ public:
 	Room() {
 		roomNum++;
 		id = roomNum;
+		int price = 0;
+		bool isBooked = 0;
+		std::string guestName = "NULL";
 	}
 	void printData() {
 		std::cout << id << std::endl;
@@ -22,7 +26,7 @@ public:
 		return price;
 	}
 	void errorMSG() { std::cout << "ERROR"; }
-	void setIsBooked(std::string isBooked) { // takes y/n;
+	void setIsBooked(std::string isBooked) { 
 		if (isBooked[0] == 'y' || isBooked[0] == 'Y') this->isBooked = true;
 		else if (isBooked[0] == 'n' || isBooked[0] == 'N') this->isBooked = false;
 		else { errorMSG(); this->isBooked = false; }
@@ -30,19 +34,24 @@ public:
 	bool getIsBooked() {
 		return isBooked;
 	}
-
-	//add guestName setter and getter
-
-};
+	void setGuestName(std::string guestName) {
+		this->guestName = guestName;
+	}
+	std::string getGuestName() {
+		return guestName;
+	}
+};	
 
 class BasicRoom : public Room {
+protected:
+	bool miniBar;
 public:
 	BasicRoom() {
-
+		
 	}
 };
 
-class VipRoom : public Room {
+class VipRoom : public BasicRoom {
 public:
 	VipRoom() {
 
