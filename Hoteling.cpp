@@ -1,20 +1,74 @@
-// Hoteling.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 
-int main()
-{
-    std::cout << "Hello World!\n";
+
+class Room {
+	static int roomNum;
+	int id;
+	int price;
+	bool isBooked;
+	std::string guestName;
+public:
+	Room() {
+		roomNum++;
+		id = roomNum;
+	}
+	void printData() {
+		std::cout << id << std::endl;
+	}
+	void setPrice(int price) {
+		this->price = price;
+	}
+	int getPrice() {
+		return price;
+	}
+	void errorMSG() { std::cout << "ERROR"; }
+	void setIsBooked(std::string isBooked) { // takes y/n;
+		if (isBooked[0] == 'y' || isBooked[0] == 'Y') this->isBooked = true;
+		else if (isBooked[0] == 'n' || isBooked[0] == 'N') this->isBooked = false;
+		else { errorMSG(); this->isBooked = false; }
+	}
+	bool getIsBooked() {
+		return isBooked;
+	}
+
+	//add guestName setter and getter
+
+};
+
+class BasicRoom : public Room {
+public:
+	BasicRoom() {
+
+	}
+};
+
+class VipRoom : public Room {
+public:
+	VipRoom() {
+
+	}
+};
+
+
+
+
+int Room::roomNum = 0;
+int main() {
+	setlocale(0, "RU");
+	Room test;
+	Room test1;
+	Room test2;
+	test.printData();
+	test1.printData();
+	test2.printData();
+	VipRoom ts;
+	VipRoom ts1;
+	VipRoom ts2;
+	ts.printData();
+	ts1.printData();
+	ts2.printData();
+
+
+
+	return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
