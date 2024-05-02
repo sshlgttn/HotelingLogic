@@ -22,7 +22,14 @@ int main() {
 	ts1.printData();
 	ts2.printData();
 
+	std::vector<Room> basicRoom;
+	std::vector<VipRoom> vipRoom;
 
+
+	for(int i = 0; i < 5; i++)	vipRoom.push_back({ 5000, 0, "vados", 0, 0, 5, "y", "n", "y" });
+	for (int i = 0; i < 5; i++) vipRoom[i].printData();
+	for (int i = 0; i < 5; i++) basicRoom.push_back({ 5000, 0, "vados", 0, 0, 5 });
+	for (int i = 0; i < 5; i++) basicRoom[i].printData();
 
 	return 0;
 }
