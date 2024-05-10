@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Logic.h"
-
+#include "Menu.h"
 
 
 
@@ -24,7 +24,11 @@ int main() {
 
 	std::vector<Room> basicRoom;
 	std::vector<VipRoom> vipRoom;
+	RusMenu* obj = new RusMenu;
+	RusMenu* obj1 = new EngMenu;
 
+	obj->menu();
+	obj1->menu();
 
 	for(int i = 0; i < 5; i++)	vipRoom.push_back({ 5000, 0, "vados", 0, 0, 5, "y", "n", "y" });
 	for (int i = 0; i < 5; i++) vipRoom[i].printData();

@@ -58,13 +58,3 @@ public:
 
 
 
-//bb
-class RusMenu {
-public:
-	static void menu();
-};
-
-class EngMenu: public RusMenu {
-public:
-	void menu();
-};
